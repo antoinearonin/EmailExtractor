@@ -19,8 +19,8 @@ import { read, write, utils } from 'xlsx'
 export class ImportComponent {
 
      private static xFileList: FileList;
-     private xEmailsList: any[];
-     private xImportForm: FormGroup;
+     public xEmailsList: any[];
+     public xImportForm: FormGroup;
      private xImportFile:FileList;
      public  xShowSpinner:any = false;
      private xData:any;
