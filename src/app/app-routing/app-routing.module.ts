@@ -8,8 +8,8 @@ import { StarterControlSidebarComponent} from '../starter/starter-control-sideba
 @NgModule({
   imports: [
     RouterModule.forRoot([
-      { path: '', redirectTo: 'import', pathMatch: 'full' },
-     { path: 'import', component: ImportComponent },
+      { path: '', redirectTo: 'extractemails', pathMatch: 'full' },
+     { path: 'extractemails', component: ImportComponent },
     ])
   ],
   declarations: [],
