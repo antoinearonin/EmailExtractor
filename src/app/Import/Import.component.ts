@@ -1,7 +1,7 @@
 ﻿import { Component } from '@angular/core';
 import { RequestOptions, Headers, } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl,Validators,FormBuilder } from '@angular/forms';
 import { SweetAlertService } from 'angular-sweetalert-service';
 import { ImportService } from '../service/Import.service';
 import { FileValidator } from '../directives/FileInputValidator'
@@ -39,10 +39,14 @@ export class ImportComponent {
     //---------------------------------------------------------------------------------------------
     //  File related validation 
     private ValidateFile() {
-        this.xImportForm = new FormGroup({
-            Import: new FormControl("", [FileValidator.validate])
-        });
+    let pattern = {
+        import: '.*\.\(xlsx\|csv\)',
     }
+
+    this.xImportForm = new FormGroup({
+        Import: new FormControl("", [Validators.required, Validators.pattern(pattern.import)])
+    });
+   }
     //---------------------------------------------------------------------------------------------
     //---------------------------------------------------------------------------------------------
     onFileChange(event) {
@@ -53,8 +57,10 @@ export class ImportComponent {
     //---------------------------------------------------------------------------------------------
     //---------------------------------------------------------------------------------------------
     uploadFile() {
-        let xFileExtension = this.xImportFile[0].name.split(".");
-        if(xFileExtension[1] == 'csv'){
+     
+        let xFileName = this.xImportFile[0].name;
+        let xFileExtension = xFileName.substr(xFileName.lastIndexOf('.')+1);
+        if(xFileExtension == 'csv'){
             this.xShowSpinner = true;
             
             ImportComponent.xFileList = this.xImportFile;
@@ -76,7 +82,7 @@ export class ImportComponent {
                 this.xShowTable = true;
             }
         }
-        else if(xFileExtension[1] == 'xlsx'){
+        else if(xFileExtension == 'xlsx'){
             this.xShowSpinner = true;
             if (this.xImportForm.valid) {
                 const target: DataTransfer = <DataTransfer>(this.xEvent.target);
