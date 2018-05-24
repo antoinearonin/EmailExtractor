@@ -4,7 +4,6 @@ import { Observable } from 'rxjs/Observable';
 import { FormGroup, FormControl,Validators,FormBuilder } from '@angular/forms';
 import { SweetAlertService } from 'angular-sweetalert-service';
 import { ImportService } from '../service/Import.service';
-import { FileValidator } from '../directives/FileInputValidator'
 import { Angular5Csv } from 'angular5-csv/Angular5-csv';
 import * as XLSX from 'xlsx';
 import { read, write, utils } from 'xlsx'

@@ -14,7 +14,6 @@ import { StarterControlSidebarComponent } from './starter/starter-control-sideba
 import { SweetAlertService } from 'angular-sweetalert-service';
 import { ImportComponent } from './Import/Import.component';
 import { ImportService } from './service/Import.service';
-import { FileValidator } from './directives/FileInputValidator'
 import { Angular5Csv } from 'angular5-csv/Angular5-csv';
 import * as XLSX from 'xlsx';
 
@@ -27,7 +26,6 @@ import * as XLSX from 'xlsx';
     StarterContentComponent,
     StarterFooterComponent,
     StarterControlSidebarComponent,
-    FileValidator
   ],
   imports: [
     BrowserModule,
