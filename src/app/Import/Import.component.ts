@@ -22,7 +22,9 @@ export class ImportComponent {
      public xEmailsList: any[];
      public xImportForm: FormGroup;
      private xImportFile:FileList;
-     public  xShowSpinner:any = false;
+     public xShowSpinner:any = false;
+     public xShowTable:any = false;
+     public xRecordCount:any;
      private xData:any;
      private xEvent:any;
      
@@ -44,6 +46,7 @@ export class ImportComponent {
     //---------------------------------------------------------------------------------------------
     //---------------------------------------------------------------------------------------------
     onFileChange(event) {
+        this.xShowTable = false;
         this.xEvent = event;
         this.xImportFile = event.target.files;
     }
@@ -61,12 +64,16 @@ export class ImportComponent {
                 xFileReader.onload = () => {
                     //convert comma saperated text to Json Array 
                     this.xEmailsList = this.xImportService.map_csv_data(xFileReader.result);
+                    this.xEmailsList = this.xEmailsList.filter((x, i, a) => x && a.indexOf(x) === i);
+                    this.xRecordCount = this.xEmailsList.length;
                     this.xShowSpinner = false;
+                    this.xShowTable = true;
                 };
             }
             else {
                 this.xEmailsList = [];
                 this.xShowSpinner = false;
+                this.xShowTable = true;
             }
         }
         else if(xFileExtension[1] == 'xlsx'){
@@ -90,13 +97,17 @@ export class ImportComponent {
                   /* save data */
                   this.xData = XLSX.utils.sheet_to_json(xWorkSheet, {header: 1});
                   this.xEmailsList = this.xImportService.map_xlsx_data(this.xData);
+                  this.xEmailsList = this.xEmailsList.filter((x, i, a) => x && a.indexOf(x) === i);
+                  this.xRecordCount = this.xEmailsList.length;
                   this.xShowSpinner = false;
+                  this.xShowTable = true;
                 };
                 xReader.readAsBinaryString(target.files[0]); 
             }
             else{
                 this.xEmailsList = [];
                 this.xShowSpinner = false;
+                this.xShowTable = true;
             }
         }
 

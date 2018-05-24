@@ -2,13 +2,13 @@
  <div class="content-wrapper" style="min-height: 1170px;">
      <section class="content-header">
          <h1>
-             Initial Import
+             Extract Emails
              <small>Preview</small>
          </h1>
          <ol class="breadcrumb">
              <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
              <li><a href="#">Admin</a></li>
-             <li class="active">Import</li>
+             <li class="active">Extract</li>
          </ol>
      </section>
  
@@ -21,8 +21,7 @@
                      <div class="box-header with-border">
                          <h3 class="box-title">Upload File & Preview</h3>
                          <div class="box-tools pull-right">
-                                <a href="/assets/ImportSample/csvData.csv" download>Download Sample for csv file </a>||
-                                <a href="/assets/ImportSample/excelData.xlsx" download>Download Sample for Excel file </a>
+                               
                          </div>
 
                      </div>
@@ -50,11 +49,11 @@
                          </div>
                      </div>
                      <hr />
-                     <div class="table-responsive custom-table-height">
+                     <div class="table-responsive custom-table-height" *ngIf="xShowTable">
                          <table class="table table-striped">
                              <thead>
                                  <tr>
-                                     <th>Email Address</th>
+                                     <th>Extracted Email Address</th>
                                  </tr>
                              </thead>
                              <tbody>
@@ -66,6 +65,7 @@
                                  </tr>
                              </tbody>
                          </table>
+                         <div>{{xRecordCount}} record found.</div>
                      </div>
                      <!-- /.table-responsive -->
                  </div>
