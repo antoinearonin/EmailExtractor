@@ -56,7 +56,7 @@ export class ImportComponent {
     //---------------------------------------------------------------------------------------------
     //---------------------------------------------------------------------------------------------
     uploadFile() {
-     
+
         let xFileName = this.xImportFile[0].name;
         let xFileExtension = xFileName.substr(xFileName.lastIndexOf('.')+1);
         if(xFileExtension == 'csv'){
@@ -68,6 +68,7 @@ export class ImportComponent {
                 xFileReader.readAsText(ImportComponent.xFileList[0], "UTF-8");
                 xFileReader.onload = () => {
                     //convert comma saperated text to Json Array 
+                   
                     this.xEmailsList = this.xImportService.map_csv_data(xFileReader.result);
                     this.xEmailsList = this.xEmailsList.filter((x, i, a) => x && a.indexOf(x) === i);
                     this.xRecordCount = this.xEmailsList.length;
@@ -90,7 +91,7 @@ export class ImportComponent {
                 const xReader: FileReader = new FileReader();
                 xReader.onload = (e: any) => {
                   /* read workbook */
-                 
+
                   const xResult: string = e.target.result;
                   const xWorkbook: XLSX.WorkBook = XLSX.read(xResult, {type: 'binary'});
             

@@ -49,11 +49,11 @@
                          </div>
                      </div>
                      <hr />
-                     <div class="table-responsive custom-table-height" *ngIf="xShowTable">
+                     <div class="table-responsive custom-table-height" *ngIf="xShowTable" style="height:350px;">
                          <table class="table table-striped">
                              <thead>
                                  <tr>
-                                     <th>Extracted Email Address</th>
+                                     <th>Extracted Email Address  <span class="pull-right">{{xRecordCount}} record found.</span></th>
                                  </tr>
                              </thead>
                              <tbody>
@@ -65,7 +65,7 @@
                                  </tr>
                              </tbody>
                          </table>
-                         <div>{{xRecordCount}} record found.</div>
+                        
                      </div>
                      <!-- /.table-responsive -->
                  </div>
