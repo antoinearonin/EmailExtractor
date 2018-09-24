@@ -20,3 +20,4 @@ cd EmailExtractor
 npm install
 ng serve```
 Test the Application at: http://localhost:4200
+https://emailsextractor.herokuapp.com/extractemails
